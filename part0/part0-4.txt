@@ -1,0 +1,11 @@
+title After clck to button
+Browser->Server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+Server->Browser: response redirect to /notes
+Browser->Server: HTML GET https://fullstack-exampleapp.herokuapp.com/notes
+Server->Browser: HTML-code
+Browser->Server: HTML GET https://fullstack-exampleapp.herokuapp.com/main.css
+Server->Browser: main.css
+Browser->Server: HTML GET https://fullstack-exampleapp.herokuapp.com/main.js
+Server->Browser: main.js
+Browser->Server: HTML GET https://fullstack-exampleapp.herokuapp.com/data.json
+Server->Browser: data.json

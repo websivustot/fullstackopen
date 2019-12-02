@@ -1,0 +1,4 @@
+title After clck to button
+Browser->Server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+Server->Browser: response {"message":"note created"}
+
