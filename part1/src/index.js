@@ -19,7 +19,7 @@ const Content = (props) => {
     )
 }
 
-const Total = (props) => {
+const Statistics = (props) => {
     return (
         <>
         <h2>Statistics</h2>
@@ -82,7 +82,7 @@ const App = () => {
     <div>
         <Header feedback={feedback} />
         <Content buttons={feedback.buttons} setToValue={setToValue} />
-        <Total feedback={[feedback,[good,neutral,bad,all,average,positive]]} />      
+        <Statistics feedback={[feedback,[good,neutral,bad,all,average,positive]]} />      
     </div>
     )
 }
