@@ -20,17 +20,25 @@ const Content = (props) => {
 }
 
 const Statistics = (props) => {
-    return (
-        <>
+    if (props.feedback[1][3])  
+        return (
+            <>        
+            <h2>Statistics</h2>
+            <p>{props.feedback[0].buttons[0]}: {props.feedback[1][0]}</p>
+            <p>{props.feedback[0].buttons[1]}: {props.feedback[1][1]}</p>
+            <p>{props.feedback[0].buttons[2]}: {props.feedback[1][2]}</p>
+            <p>All: {props.feedback[1][3]}</p>
+            <p>Average: {props.feedback[1][4]}</p>
+            <p>Positive: {props.feedback[1][5]}%</p>
+            </>
+        )
+     else return (
+        <>        
         <h2>Statistics</h2>
-        <p>{props.feedback[0].buttons[0]}: {props.feedback[1][0]}</p>
-        <p>{props.feedback[0].buttons[1]}: {props.feedback[1][1]}</p>
-        <p>{props.feedback[0].buttons[2]}: {props.feedback[1][2]}</p>
-        <p>All: {props.feedback[1][3]}</p>
-        <p>Average: {props.feedback[1][4]}</p>
-        <p>Positive: {props.feedback[1][5]}%</p>
+        <p>No feedback given.</p>
         </>
     )
+    
 }
 
 const Button = (props) => {
