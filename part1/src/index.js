@@ -26,6 +26,9 @@ const Total = (props) => {
         <p>{props.feedback[0].buttons[0]}: {props.feedback[1][0]}</p>
         <p>{props.feedback[0].buttons[1]}: {props.feedback[1][1]}</p>
         <p>{props.feedback[0].buttons[2]}: {props.feedback[1][2]}</p>
+        <p>All: {props.feedback[1][3]}</p>
+        <p>Average: {props.feedback[1][4]}</p>
+        <p>Positive: {props.feedback[1][5]}%</p>
         </>
     )
 }
@@ -44,7 +47,9 @@ const App = () => {
     const [good, setGood] = useState(0);
     const [neutral, setNeutral] = useState(0);
     const [bad, setBad] = useState(0);
-    //const [allClicks, setValue] = useState([0,0,0]);
+    const [all, setAll] = useState(0);
+    const [average, setAverage] = useState(0);
+    const [positive, setPositive] = useState(0);
 
     const feedback = {
         title: 'Give feedback',
@@ -54,21 +59,30 @@ const App = () => {
     const setToValue = newValue => {
         if (newValue === 'Good') {
             setGood(good + 1);
+            setAll(all + 1);
+            setAverage(average + 1);
+            setPositive((good + 1) / (all + 1) * 100);
         }
         if (newValue === 'Bad') {
             setBad(bad + 1);
+            setAll(all + 1);
+            setAverage(average - 1);
+            setPositive((good) / (all + 1) * 100);
         }
         if (newValue === 'Neutral') {
             setNeutral(neutral + 1);
-        }
-        console.log(good,bad,neutral);
+            setAll(all + 1);
+            setPositive((good) / (all + 1) * 100);
+        }        
+        
+        console.log(good,bad,neutral,all,average);
     }
 
     return (
     <div>
         <Header feedback={feedback} />
         <Content buttons={feedback.buttons} setToValue={setToValue} />
-        <Total feedback={[feedback,[good,neutral,bad]]} />      
+        <Total feedback={[feedback,[good,neutral,bad,all,average,positive]]} />      
     </div>
     )
 }
