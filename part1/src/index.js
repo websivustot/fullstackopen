@@ -19,17 +19,23 @@ const Content = (props) => {
     )
 }
 
+const Statistic = (props) => {
+    return (
+        <p>{props.text}: {props.value}</p>
+    )
+}
+
 const Statistics = (props) => {
     if (props.feedback[1][3])  
         return (
             <>        
             <h2>Statistics</h2>
-            <p>{props.feedback[0].buttons[0]}: {props.feedback[1][0]}</p>
-            <p>{props.feedback[0].buttons[1]}: {props.feedback[1][1]}</p>
-            <p>{props.feedback[0].buttons[2]}: {props.feedback[1][2]}</p>
-            <p>All: {props.feedback[1][3]}</p>
-            <p>Average: {props.feedback[1][4]}</p>
-            <p>Positive: {props.feedback[1][5]}%</p>
+            <Statistic text={props.feedback[0].buttons[0]} value ={props.feedback[1][0]} />
+            <Statistic text={props.feedback[0].buttons[1]} value ={props.feedback[1][1]} />
+            <Statistic text={props.feedback[0].buttons[2]} value ={props.feedback[1][2]} />
+            <Statistic text="All" value ={props.feedback[1][3]} />
+            <Statistic text="Average" value ={props.feedback[1][4]} />
+            <Statistic text="Positive" value ={props.feedback[1][5] + "%"} />            
             </>
         )
      else return (
