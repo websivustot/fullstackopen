@@ -14,6 +14,8 @@ const App = (props) => {
 
     const [points, setPoints] = useState(new Array(6).fill(0));
 
+    const [max, setMax] = useState();
+
     const changeText = () => {
         setSelected(getRandomNumber());
     }
@@ -27,16 +29,23 @@ const App = (props) => {
         const copy = [...points];
         copy[selected] += 1;
         setPoints(copy);
-        console.log(points);
+        let m = copy.indexOf(Math.max(...copy));
+        console.log(points, m);
+        setMax(m);        
     }
 
+    let votes = '';
+
+    if (typeof max !== 'undefined') votes = <div><h1>Anecdote with most vote</h1><p>{props.anecdotes[max]}</p><p>Has {points[max]} votes.</p></div>;
   return (
     <div>
         {props.anecdotes[selected]}
+        <p>Has {points[selected]} votes.</p>
         <div>
         <Button text="Vote" changeText={vote} />
         <Button text="Next anecdote" changeText={changeText} />
-        </div>        
+        </div>
+        { votes }
     </div>
     
   )
