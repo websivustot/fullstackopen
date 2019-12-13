@@ -21,7 +21,7 @@ const Content = (props) => {
 
 const Statistic = (props) => {
     return (
-        <p>{props.text}: {props.value}</p>
+        <tr><td><p>{props.text}</p></td><td><p>{props.value}</p></td></tr>
     )
 }
 
@@ -30,12 +30,17 @@ const Statistics = (props) => {
         return (
             <>        
             <h2>Statistics</h2>
-            <Statistic text={props.feedback[0].buttons[0]} value ={props.feedback[1][0]} />
-            <Statistic text={props.feedback[0].buttons[1]} value ={props.feedback[1][1]} />
-            <Statistic text={props.feedback[0].buttons[2]} value ={props.feedback[1][2]} />
-            <Statistic text="All" value ={props.feedback[1][3]} />
-            <Statistic text="Average" value ={props.feedback[1][4]} />
-            <Statistic text="Positive" value ={props.feedback[1][5] + "%"} />            
+            <table>
+                <tbody>
+                <Statistic text={props.feedback[0].buttons[0]} value ={props.feedback[1][0]} />
+                <Statistic text={props.feedback[0].buttons[1]} value ={props.feedback[1][1]} />
+                <Statistic text={props.feedback[0].buttons[2]} value ={props.feedback[1][2]} />
+                <Statistic text="All" value ={props.feedback[1][3]} />
+                <Statistic text="Average" value ={props.feedback[1][4]} />
+                <Statistic text="Positive" value ={props.feedback[1][5] + "%"} />
+                </tbody>
+            </table>
+                        
             </>
         )
      else return (
